@@ -1,0 +1,120 @@
+/* all.css */
+.tf-slider-widgets {
+    width: 100%;
+    height: 86vh;
+    position: relative;
+  }
+  
+  .swiper-images {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .tf-slider .swiper-slides {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .overlays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  
+  .silde-content {
+    max-width: 100%;
+    margin-top: 150px;
+  }
+  
+  .flat-title-slider {
+    font-size: 4rem;
+    font-weight: bold;
+    /* margin-bottom: 15px; */
+    
+  }
+  
+  .flat-description-slider {
+    font-size: 1.25rem;
+    /* margin-bottom: 20px; */
+  }
+  
+  
+  
+  .flat-button {
+    background-color: #FEC802; /* Button background color */
+    color: #0049BE; /* Button text color */
+    padding: 10px 20px; /* Padding around the button text */
+    border-radius: 50px; /* Large border-radius for pill shape */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.25rem; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth background transition on hover */
+    display: inline-block; /* Ensures the button respects padding */
+  }
+  
+  .flat-button:hover {
+    background-color:#FEC802 ; /* Hover effect */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .flat-title-slider {
+      font-size: 2rem;
+    }
+  
+    .flat-description-slider {
+      font-size: 1rem;
+    }
+  
+    .flat-button {
+      font-size: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .flat-title-slider {
+      font-size: 2rem;
+    }
+  
+    .flat-description-slider {
+      font-size: 0.9rem;
+    }
+  
+    .flat-button {
+      font-size: 1rem;
+    }
+  }
+  
+
+
+
+  .image-logo {
+    width: 100%; /* Makes images responsive */
+    height: 100px; /* Set a consistent height for all images */
+    object-fit: contain; /* Ensures the aspect ratio is preserved */
+    margin: 0 auto; /* Centers the images */
+  }
+  
+  .swiper-slide {
+    display: flex;
+    justify-content: center; /* Center images horizontally */
+    align-items: center; /* Center images vertically */
+  }
+  
+  .sologan-logo {
+    /* Ensure that the container does not shrink or expand */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .tf-widget-partner {
+    padding: 40px 0;
+  }
+  
