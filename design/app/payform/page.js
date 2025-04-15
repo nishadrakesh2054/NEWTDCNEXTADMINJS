@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import getCurrentDate from "../../components/elements/getCurrentDate";
+import Layout from "@/components/layout/Layout";
 
 const page = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,6 @@ const page = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    // Load data from sessionStorage when component mounts
     const loadData = () => {
       try {
         const storedFormData = sessionStorage.getItem("formData");
@@ -117,95 +117,150 @@ const page = () => {
   };
 
   return (
-    <div className="payment-container">
-      <h2>Payment Details</h2>
+    <>
+      <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Payment Summary">
+        <div className="payment-wrapper">
+          <div className="payment-box">
+            <h2 className="payment-heading">Payment Details</h2>
 
-      {error && (
-        <div className="alert alert-danger">
-          {error}
-          <button onClick={handleBack} className="btn btn-secondary ml-2">
-            Go Back
-          </button>
+            {error && (
+              <div className="alert alert-danger d-flex justify-content-between align-items-center">
+                <span>{error}</span>
+                <button
+                  onClick={handleBack}
+                  className="btn btn-outline-light btn-sm ms-3"
+                >
+                  Go Back
+                </button>
+              </div>
+            )}
+
+            {formData && (
+              <div className="payment-summary shadow-sm">
+                <h4 className="summary-title">Registration Summary</h4>
+                <ul className="summary-list">
+                  <li>
+                    <strong>Name:</strong> {formData.fullName}
+                  </li>
+                  <li>
+                    <strong>Sports:</strong> {formData.sports}
+                  </li>
+                  <li>
+                    <strong>Category:</strong> {formData.category}
+                  </li>
+                  <li>
+                    <strong>Amount to Pay:</strong> NPR &nbsp; {fee} /-
+                  </li>
+                  <li>
+                    <strong>PRN:</strong> {prn}
+                  </li>
+                </ul>
+              </div>
+            )}
+
+            <div className="payment-actions">
+              <button
+                onClick={generatePaymentUrl}
+                disabled={loading || !formData || !fee}
+                className="btn btn-success px-4"
+              >
+                {loading ? (
+                  <>
+                    <span
+                      className="spinner-border spinner-border-sm me-2"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Processing...
+                  </>
+                ) : (
+                  "Proceed to Payment"
+                )}
+              </button>
+
+              <button
+                onClick={handleBack}
+                className="btn btn-outline-secondary px-4"
+              >
+                Back to Registration
+              </button>
+            </div>
+          </div>
+
+          <style jsx>{`
+            .payment-wrapper {
+              display: flex;
+              justify-content: center;
+              padding: 3rem 1rem;
+              background: linear-gradient(145deg, #f8f9fa, #ffffff);
+            }
+
+            .payment-box {
+              width: 100%;
+              max-width: 700px;
+              background: #fff;
+              padding: 2.5rem;
+              border-radius: 12px;
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            }
+
+            .payment-heading {
+              font-size: 2rem;
+              font-weight: 600;
+              margin-bottom: 2rem;
+              color: #333;
+              text-align: center;
+            }
+
+            .payment-summary {
+              background: #f1f3f5;
+              border-left: 4px solid #0d6efd;
+              padding: 1.5rem;
+              border-radius: 8px;
+              margin-bottom: 2rem;
+            }
+
+            .summary-title {
+              font-size: 1.25rem;
+              font-weight: 600;
+              margin-bottom: 1rem;
+            }
+
+            .summary-list {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            }
+
+            .summary-list li {
+              margin-bottom: 0.5rem;
+              font-size: 1rem;
+              color: #333;
+            }
+
+            .payment-actions {
+              display: flex;
+              gap: 1rem;
+              justify-content: center;
+            }
+
+            .alert-danger {
+              background-color: #dc3545;
+              color: #fff;
+              padding: 1rem;
+              border-radius: 6px;
+              margin-bottom: 1.5rem;
+            }
+
+            @media (max-width: 576px) {
+              .payment-actions {
+                flex-direction: column;
+              }
+            }
+          `}</style>
         </div>
-      )}
-
-      {formData && (
-        <div className="payment-summary">
-          <h3>Registration Summary</h3>
-          <p>
-            <strong>Name:</strong> {formData.fullName}
-          </p>
-          <p>
-            <strong>Sports:</strong> {formData.sports}
-          </p>
-          <p>
-            <strong>Category:</strong> {formData.category}
-          </p>
-          <p>
-            <strong>Amount to Pay:</strong> NPR {fee}
-          </p>
-          <p>
-            <strong>PRN:</strong> {prn}
-          </p>
-        </div>
-      )}
-
-      <div className="payment-actions">
-        <button
-          onClick={generatePaymentUrl}
-          disabled={loading || !formData || !fee}
-          className="btn btn-primary"
-        >
-          {loading ? (
-            <>
-              <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-              Processing...
-            </>
-          ) : (
-            "Proceed to Payment"
-          )}
-        </button>
-
-        <button onClick={handleBack} className="btn btn-secondary">
-          Back to Registration
-        </button>
-      </div>
-
-      <style jsx>{`
-        .payment-container {
-          max-width: 800px;
-          margin: 2rem auto;
-          padding: 2rem;
-          border: 1px solid #ddd;
-          border-radius: 8px;
-        }
-        .payment-summary {
-          background: #f8f9fa;
-          padding: 1.5rem;
-          margin-bottom: 1.5rem;
-          border-radius: 4px;
-        }
-        .payment-actions {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-        }
-        .alert {
-          padding: 1rem;
-          margin-bottom: 1rem;
-          border-radius: 4px;
-        }
-        .alert-danger {
-          background-color: #f8d7da;
-          color: #721c24;
-          border: 1px solid #f5c6cb;
-        }
-        .btn:disabled {
-          opacity: 0.65;
-          cursor: not-allowed;
-        }
-      `}</style>
-    </div>
+      </Layout>
+    </>
   );
 };
 

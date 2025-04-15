@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import Head from "next/head";
+import Layout from "@/components/layout/Layout";
 
 const PaymentResponse = () => {
   const router = useRouter();
@@ -48,18 +49,13 @@ const PaymentResponse = () => {
         if (params.PS === "false" || params.RC !== "successful") {
           let message = "Payment failed";
           switch (params.RC) {
-            case "01":
+            case "cancel":
               message = "Payment was cancelled by user";
               break;
-            case "02":
+            case "failed":
               message = "Payment timed out";
               break;
-            case "03":
-              message = "Invalid payment credentials";
-              break;
-            case "04":
-              message = "Insufficient funds";
-              break;
+
             default:
               message = `Payment failed (Code: ${params.RC})`;
           }
@@ -136,94 +132,83 @@ const PaymentResponse = () => {
 
   return (
     <>
-      <Head>
-        <title>{isSuccess ? "Payment Successful" : "Payment Failed"}</title>
-        <meta name="description" content="Payment processing result" />
-      </Head>
+      <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Payment Status">
+        <Head>
+          <title>{isSuccess ? "Payment Successful" : "Payment Failed"}</title>
+          <meta name="description" content="Payment processing result" />
+        </Head>
 
-      <div className="container py-5">
-        {isSuccess ? (
-          <div className="row justify-content-center">
-            <div className="col-md-8">
-              <div className="card border-success">
-                <div className="card-header bg-success text-white">
-                  <h2 className="mb-0">Payment Successful</h2>
+        <div className="response-wrapper">
+          <div className="status-card">
+            {isSuccess ? (
+              <>
+                <div className="status-header success">
+                  <i className="bi bi-check-circle-fill status-icon"></i>
+                  <h2>Payment Successful</h2>
                 </div>
-                <div className="card-body">
-                  <div className="alert alert-success">
-                    <i className="bi bi-check-circle-fill me-2"></i>
-                    Thank you, <strong>{paymentDetails?.fullName}</strong>!
-                  </div>
-
-                  <p className="lead">
-                    Your registration has been successfully completed, and your
-                    payment has been received. You will shortly receive a
-                    confirmation email with further details.
+                <div className="status-body">
+                  <p className="thank-msg">
+                    Thank you, <strong>{paymentDetails?.fullName}</strong>! Your
+                    registration and payment have been successfully processed.
                   </p>
 
-                  <div className="border p-4 rounded mb-4">
-                    <h3 className="text-center">
+                  <div className="details-box">
+                    <h4>
                       Total Paid: NPR{" "}
                       <span className="text-success">
                         {paymentDetails?.amount}
                       </span>
-                    </h3>
-                    <div className="d-flex justify-content-between mt-3">
-                      <span>Transaction ID:</span>
-                      <strong>{paymentDetails?.transactionId}</strong>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                      <span>Sports:</span>
-                      <strong>{paymentDetails?.sports}</strong>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                      <span>Category:</span>
-                      <strong>{paymentDetails?.category}</strong>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                      <span>Date:</span>
-                      <strong>{new Date().toLocaleDateString()}</strong>
-                    </div>
+                    </h4>
+                    <ul className="details-list">
+                      <li>
+                        <span>Transaction ID:</span>{" "}
+                        <strong>{paymentDetails?.transactionId}</strong>
+                      </li>
+                      <li>
+                        <span>Sports:</span>{" "}
+                        <strong>{paymentDetails?.sports}</strong>
+                      </li>
+                      <li>
+                        <span>Category:</span>{" "}
+                        <strong>{paymentDetails?.category}</strong>
+                      </li>
+                      <li>
+                        <span>Date:</span>{" "}
+                        <strong>{new Date().toLocaleDateString()}</strong>
+                      </li>
+                    </ul>
                   </div>
 
-                  <p className="text-center mt-4">
-                    We look forward to seeing you at the academy. If you have
-                    any questions, please contact our team.
+                  <p className="text-muted text-center mt-4">
+                    You’ll receive a confirmation email shortly. For any
+                    questions, contact our support team.
                   </p>
 
                   <div className="text-center mt-4">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary px-4"
                       onClick={() => router.push("/")}
                     >
                       Go to Dashboard
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="row justify-content-center">
-            <div className="col-md-8">
-              <div className="card border-danger">
-                <div className="card-header bg-danger text-white">
-                  <h2 className="mb-0">Payment Failed</h2>
+              </>
+            ) : (
+              <>
+                <div className="status-header failed">
+                  <i className="bi bi-x-circle-fill status-icon"></i>
+                  <h2>Payment Failed</h2>
                 </div>
-                <div className="card-body">
-                  <div className="alert alert-danger">
-                    <i className="bi bi-exclamation-triangle-fill me-2"></i>
-                    {responseMessage}
-                  </div>
-
+                <div className="status-body">
+                  <div className="alert alert-danger">{responseMessage}</div>
                   <p className="lead">
-                    We couldn't process your payment. Please try again or
-                    contact support if the problem persists.
+                    We couldn’t process your payment. Please try again or
+                    contact our support.
                   </p>
-
                   <div className="text-center mt-4">
                     <button
-                      className="btn btn-primary me-2"
+                      className="btn btn-primary me-3"
                       onClick={() => router.push("/register")}
                     >
                       Try Again
@@ -236,11 +221,92 @@ const PaymentResponse = () => {
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
+              </>
+            )}
           </div>
-        )}
-      </div>
+
+          <style jsx>{`
+            .response-wrapper {
+              display: flex;
+              justify-content: center;
+              padding: 4rem 1rem;
+              background: #f9fafb;
+            }
+
+            .status-card {
+              background: #fff;
+              border-radius: 12px;
+              padding: 2.5rem;
+              max-width: 700px;
+              width: 100%;
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            }
+
+            .status-header {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              border-radius: 10px 10px 0 0;
+              padding-bottom: 1.5rem;
+              border-bottom: 1px solid #e9ecef;
+            }
+
+            .status-header.success {
+              color: #198754;
+            }
+
+            .status-header.failed {
+              color: #dc3545;
+            }
+
+            .status-icon {
+              font-size: 2rem;
+            }
+
+            .thank-msg {
+              font-size: 1.15rem;
+              margin: 1.5rem 0;
+            }
+
+            .details-box {
+              background: #f1f3f5;
+              padding: 1.5rem;
+              border-radius: 8px;
+              border-left: 4px solid #0d6efd;
+            }
+
+            .details-box h4 {
+              font-weight: 600;
+              margin-bottom: 1rem;
+            }
+
+            .details-list {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            }
+
+            .details-list li {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 0.5rem;
+              font-size: 1rem;
+            }
+
+            .alert-danger {
+              font-size: 1rem;
+              margin-bottom: 1rem;
+            }
+
+            @media (max-width: 576px) {
+              .details-list li {
+                flex-direction: column;
+                align-items: flex-start;
+              }
+            }
+          `}</style>
+        </div>
+      </Layout>
     </>
   );
 };

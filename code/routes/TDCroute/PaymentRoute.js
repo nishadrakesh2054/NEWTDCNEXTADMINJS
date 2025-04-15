@@ -38,7 +38,6 @@ router.post("/pre-check-registration", async (req, res) => {
       .json({ success: false, message: error.details[0].message });
   }
 
-  //   const { email, contactNo, sports, category } = value;
 
   try {
     const existingRegistration = await Registration.findOne({
@@ -99,7 +98,7 @@ router.post("/verify-payment", async (req, res) => {
 
   const verificationString = `${PRN},${PID},${PS},${RC},${UID},${BC},${INI},${P_AMT},${R_AMT}`;
   let SECRET_KEY = "b83ec0267af644a89e7b7e9bf3fb16e0";
-  //   let SECRET_KEY = "fonepay";
+
   try {
     // 2. More secure hash comparison (timing-safe)
     const hmac = crypto.createHmac("sha512", SECRET_KEY);
