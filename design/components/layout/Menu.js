@@ -45,13 +45,13 @@ export default function Menu() {
           
         </li> */}
 
-        <li className={`${checkParentActive(["/blog", "/blog-single"])}`}>
+        <li className={`${checkParentActive(["/individual", "/squad"])}`}>
           <Link href="/#">Academy</Link>
           <ul className="submenu">
-            <li className={`item ${checkCurrentMenuItem("/blog")}`}>
+            <li className={`item ${checkCurrentMenuItem("/individual")}`}>
               <Link href="/individual">Individual</Link>
             </li>
-            <li className={`item ${checkCurrentMenuItem("/blog-single")}`}>
+            <li className={`item ${checkCurrentMenuItem("/squad")}`}>
               <Link href="/squad">Squad</Link>
             </li>
           </ul>
@@ -63,7 +63,7 @@ export default function Menu() {
         >
           <Link href="/camps">Special Camps</Link>
         </li>
-
+{/* 
         <li className={`${checkParentActive(["/event", "/event-details"])}`}>
           <Link href="/#"> Events</Link>
           <ul className="submenu">
@@ -74,15 +74,15 @@ export default function Menu() {
               <Link href="/event-details">Football League</Link>
             </li>
           </ul>
-        </li>
-
+        </li> */}
+{/* 
         <li
           className={`item ${
             pathname === "/gallery" ? "current-menu-item" : ""
           }`}
         >
           <Link href="/gallery">gallery</Link>
-        </li>
+        </li> */}
         <li
           className={`item ${
             pathname === "/course" ? "current-menu-item" : ""

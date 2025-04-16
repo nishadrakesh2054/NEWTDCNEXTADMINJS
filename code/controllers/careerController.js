@@ -22,11 +22,11 @@ export const getCareerPostById = async (req, res) => {
   try {
     const { id } = req.params; // Extract ID from the request parameters
     const careerPost = await Career.findById(id); // Find the career post by ID
-    
+
     if (!careerPost) {
       return res.status(404).json({ message: "Career post not found" });
     }
-    
+
     res.status(200).json({
       message: "Career post fetched successfully",
       careerPost, // Return the career post

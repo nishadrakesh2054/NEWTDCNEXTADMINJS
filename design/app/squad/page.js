@@ -40,11 +40,11 @@ const individualSports = [
     ],
   },
 
-
   {
     id: "futsal",
     name: "FUTSAL ACADEMY",
-    heroImage: "https://img.freepik.com/premium-photo/bangkok-thailand-november-10th-2021-soccer-ball-tactics-children-control-ball-grass-field-with-cone-training-thailand-background-training-soccer-academy_478515-4452.jpg?w=996",
+    heroImage:
+      "https://img.freepik.com/premium-photo/bangkok-thailand-november-10th-2021-soccer-ball-tactics-children-control-ball-grass-field-with-cone-training-thailand-background-training-soccer-academy_478515-4452.jpg?w=996",
     description:
       "Our futsal academy Program offers comprehensive training for players of all levels, from beginners to advanced athletes. With expert coaching and a focus on developing technique, agility, and strategic play, we help participants enhance their skills and enjoy the game. Whether you are picking up a racket for the first time or aiming to compete at a higher level, our program provides the perfect environment for growth and success. Join us and elevate your futsal academy game!",
     levels: [
@@ -78,7 +78,8 @@ const individualSports = [
   {
     id: "football",
     name: "FOOTBALL ACADEMY",
-    heroImage: "https://img.freepik.com/premium-photo/close-up-soccer-ball-field_1048944-15104952.jpg?w=1380",
+    heroImage:
+      "https://img.freepik.com/premium-photo/close-up-soccer-ball-field_1048944-15104952.jpg?w=1380",
     description:
       "Our football academy Program offers comprehensive training for players of all levels, from beginners to advanced athletes. With expert coaching and a focus on developing technique, agility, and strategic play, we help participants enhance their skills and enjoy the game. Whether you are picking up a racket for the first time or aiming to compete at a higher level, our program provides the perfect environment for growth and success. Join us and elevate your football academy game!",
     levels: [
@@ -128,7 +129,7 @@ export default function IndividualSportList() {
   return (
     <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Our Programs">
       <div className="page-title page-title-blog">
-        <div className="themeflat-container">
+        <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className="page-title-heading">
@@ -148,124 +149,131 @@ export default function IndividualSportList() {
                   </li>
                 </ul>
               </div>
-             
             </div>
-         
           </div>
           {/* /.row */}
         </div>
         {/* /.container */}
       </div>
+      <div className="container  ">
+        <div className="row  g-4 my-4 ">
+          {individualSports.map((sport) => {
+            const activeTabIndex = activeTabs[sport.id] || 0;
+            const activeLevel = sport.levels[activeTabIndex];
 
-      <div className="row g-5 themeflat-container">
-        {individualSports.map((sport) => {
-          const activeTabIndex = activeTabs[sport.id] || 0;
-          const activeLevel = sport.levels[activeTabIndex];
-
-          return (
-            <div key={sport.id} className="col-12">
-              <div className="card border-0 shadow-lg overflow-hidden">
-                {/* Hero section */}
-                <div className="position-relative" style={{ height: "350px" }}>
-                  <img
-                    src={sport.heroImage}
-                    alt={sport.name}
-                    className="w-100 h-100 object-fit-cover"
-                    style={{ objectPosition: "center" }}
-                  />
-                  <div className="position-absolute top-0 start-0 w-100 h-100  d-flex align-items-center justify-content-center px-3">
-                    <div className="text-center">
-                      <h3 className="text-white display-6 fw-bold mb-3">
-                        {sport.name}
-                      </h3>
-                      <p className="text-dark mb-0 " style={{ lineHeight: "1.2", fontSize: "1rem" }}>{sport.description}</p>
+            return (
+              <div key={sport.id} className="col-12">
+                <div className="card border-0 shadow-lg overflow-hidden">
+                  {/* Hero section */}
+                  <div
+                    className="position-relative"
+                    style={{ height: "350px" }}
+                  >
+                    <img
+                      src={sport.heroImage}
+                      alt={sport.name}
+                      className="w-100 h-100 object-fit-cover"
+                      style={{ objectPosition: "center" }}
+                    />
+                    <div className="position-absolute top-0 start-0 w-100 h-100  d-flex align-items-center justify-content-center px-3">
+                      <div className="text-center">
+                        <h3 className="text-white display-6 fw-bold mb-3">
+                          {sport.name}
+                        </h3>
+                        <p
+                          className="text-dark mb-0 "
+                          style={{ lineHeight: "1.2", fontSize: "1rem" }}
+                        >
+                          {sport.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Levels as Tabs */}
-                <div className="card-body px-4 py-5 bg-light">
-                  <h4 className="mb-4 fw-bold text-center">
-                    Explore Training Levels
-                  </h4>
-                  <ul
-                    className="nav nav-pills mb-3 justify-content-center"
-                    id={`tabs-${sport.id}`}
-                    role="tablist"
-                  >
-                    {sport.levels.map((level, i) => (
-                      <li className="nav-item" key={i}>
-                        <button
-                          className={`nav-link px-3  ${
-                            activeTabIndex === i
-                              ? "active border-primary"
-                              : "border-0"
-                          }`}
-                          onClick={() => handleTabChange(sport.id, i)}
-                          type="button"
-                          role="tab"
-                          style={{
-                            borderRadius: "30px",
-                            transition: "all 0.3s ease-in-out",
-                            backgroundColor:
-                              activeTabIndex === i ? "#007bff" : "#f8f9fa",
-                            color: activeTabIndex === i ? "#ffff" : "#495057",
-                          }}
-                          onMouseEnter={(e) =>
-                            (e.target.style.backgroundColor = "#0056b3")
-                          }
-                          onMouseLeave={(e) =>
-                            (e.target.style.backgroundColor =
-                              activeTabIndex === i ? "#007bff" : "#f8f9fa")
-                          }
-                        >
-                          {level.title}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Active tab content */}
-                  <div className="row align-items-center g-5  mt-2">
-                    <div className="col-md-5 ">
-                      <img
-                        src={activeLevel.image}
-                        alt={activeLevel.title}
-                        className="img-fluid rounded shadow-sm border border-warning border-2"
-                        style={{
-                          width: "100%",
-                          height: "320px",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </div>
-                    <div className="col-md-7">
-                      <h4 className="fw-bold mb-2 text-uppercase">
-                        {activeLevel.title}
-                      </h4>
-                      {activeLevel.age && (
-                        <p className="text-muted mb-2">
-                          Age Group: {activeLevel.age}
-                        </p>
-                      )}
-                      <p className=" post wow fadeInUp animated mb-3">
-                        {activeLevel.description}
-                      </p>
-
-                      <div className="header-right">
-                        <Link href="/register">
-                          <button className="btn-contact">
-                            {activeLevel.button}
+                  {/* Levels as Tabs */}
+                  <div className="card-body px-4 py-5 bg-light">
+                    <h4 className="mb-4 fw-bold text-center">
+                      Explore Training Levels
+                    </h4>
+                    <ul
+                      className="nav nav-pills mb-3 justify-content-center"
+                      id={`tabs-${sport.id}`}
+                      role="tablist"
+                    >
+                      {sport.levels.map((level, i) => (
+                        <li className="nav-item mx-1 " key={i}>
+                          <button
+                            className={`nav-link text-uppercase px-2  ${
+                              activeTabIndex === i
+                                ? "active border-primary"
+                                : "border-0"
+                            }`}
+                            onClick={() => handleTabChange(sport.id, i)}
+                            type="button"
+                            role="tab"
+                            style={{
+                              borderRadius: "30px",
+                              transition: "all 0.3s ease-in-out",
+                              backgroundColor:
+                                activeTabIndex === i ? "#007bff" : "#f8f9fa",
+                              color: activeTabIndex === i ? "#ffff" : "#495057",
+                            }}
+                            // onMouseEnter={(e) =>
+                            //   (e.target.style.backgroundColor = "#0056b3",e.target.style.color='white')
+                            // }
+                            onMouseLeave={(e) =>
+                              (e.target.style.backgroundColor =
+                                activeTabIndex === i ? "#007bff" : "#f8f9fa")
+                            }
+                          >
+                            {level.title}
                           </button>
-                        </Link>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Active tab content */}
+                    <div className="row align-items-center g-5  mt-2">
+                      <div className="col-md-5 ">
+                        <img
+                          src={activeLevel.image}
+                          alt={activeLevel.title}
+                          className="img-fluid rounded shadow-sm border border-warning border-2"
+                          style={{
+                            width: "100%",
+                            height: "320px",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+                      <div className="col-md-7">
+                        <h4 className="fw-bold mb-2 text-uppercase">
+                          {activeLevel.title}
+                        </h4>
+                        {activeLevel.age && (
+                          <p className="text-muted mb-2">
+                            Age Group: {activeLevel.age}
+                          </p>
+                        )}
+                        <p className=" post wow fadeInUp animated mb-3">
+                          {activeLevel.description}
+                        </p>
+
+                        <div className="header-right">
+                          <Link href="/register">
+                            <button className="btn-contact">
+                              {activeLevel.button}
+                            </button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );

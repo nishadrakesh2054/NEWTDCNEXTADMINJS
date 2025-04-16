@@ -1038,11 +1038,47 @@ export const Resources = [
       navigation: { name: "Communication", icon: "User" },
       properties: {
         _id: { isVisible: false },
+        name: {
+          label: "Full Name",
+          position: 1,
+        },
+        email: {
+          label: "Email Address",
+          position: 2,
+        },
+        phone: {
+          label: "Phone Number",
+          position: 3,
+        },
+        subject: {
+          label: "Subject",
+          position: 4,
+        },
+        message: {
+          label: "Message",
+          type: "textarea",
+          position: 5,
+        },
+        notes: {
+          label: "Subscribed to Updates",
+          position: 6,
+          availableValues: [
+            { value: true, label: "Yes" },
+            { value: false, label: "No" },
+          ],
+        },
+        createdAt: {
+          isVisible: { list: true, filter: true, show: true, edit: false },
+          position: 7,
+        },
+        updatedAt: {
+          isVisible: { list: false, filter: false, show: true, edit: false },
+          position: 8,
+        },
       },
       actions: {
         list: {
           isAccessible: ({ currentAdmin }) => {
-            // admin, sub-admin, and editor can view the list
             return (
               currentAdmin &&
               (currentAdmin.role === "admin" ||
@@ -1053,7 +1089,6 @@ export const Resources = [
         },
         new: {
           isAccessible: ({ currentAdmin }) => {
-            // Only admin and sub-admin can create new brand logos
             return (
               currentAdmin &&
               (currentAdmin.role === "admin" ||
@@ -1063,7 +1098,6 @@ export const Resources = [
         },
         edit: {
           isAccessible: ({ currentAdmin }) => {
-            // admin, sub-admin, and editor can edit brand logos
             return (
               currentAdmin &&
               (currentAdmin.role === "admin" ||
@@ -1074,14 +1108,13 @@ export const Resources = [
         },
         delete: {
           isAccessible: ({ currentAdmin }) => {
-            // Only admin can delete brand logos
             return currentAdmin && currentAdmin.role === "admin";
           },
         },
       },
     },
   },
-
+  
   //   get in touch section
   {
     resource: User,

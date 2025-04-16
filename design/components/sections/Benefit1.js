@@ -9,7 +9,7 @@ export default function Benefit1() {
   return (
     <>
       <div className="tf-widget-benefit background-black">
-        <div className="themeflat-container">
+        <div className="container">
           <div className="tf-benefit">
             {/* header style v2 */}
             <div className="title-box-v2 center-title-box title-large">

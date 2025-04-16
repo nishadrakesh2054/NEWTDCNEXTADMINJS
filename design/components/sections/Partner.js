@@ -59,8 +59,8 @@ const swiperOptions = {
 export default function Partner() {
   return (
     <>
-      <div className="tf-widget-partner background-black py-5">
-        <div className="themeflat-container">
+      <div className="tf-widget-partner background- py-5">
+        <div className="container">
           <div className="tf-partner">
             <Swiper {...swiperOptions} className="sologan-logo ">
             <SwiperSlide>

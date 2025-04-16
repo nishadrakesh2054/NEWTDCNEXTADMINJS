@@ -30,9 +30,44 @@ const oswald = Oswald({
 	display: 'swap',
 })
 export const metadata = {
-	title: 'Thunderbolts Development Center',
-	description: 'Thunderbolts Development Center',
-}
+    title: {
+      default: 'Thunderbolts Development Center',
+      template: '%s | Thunderbolts',
+    },
+    description:
+      'The best sports academy for football, futsal, cricket, tennis, aquatic sports, and swimming.',
+    keywords: [
+      'Thunderbolts',
+      'football coaching',
+      'futsal training',
+      'swimming classes',
+      'cricket academy',
+      'tennis academy',
+      'sports academy',
+      'aquatic training',
+    ],
+    metadataBase: new URL('https://www.thunderbolts.com.np'),
+    openGraph: {
+      title: 'Thunderbolts Development Center',
+      description:
+        'Train with Thunderbolts for football, futsal, cricket, tennis, aquatic sports, and swimming excellence.',
+      url: 'https://www.thunderbolts.com.np',
+      siteName: 'Thunderbolts Development Center',
+      images: [
+        {
+          url: 'https://www.thunderbolts.com.np/assets/logo/white-logo.png',
+          width: 1200,
+          height: 630,
+          alt: 'Thunderbolts Logo',
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+ 
+  };
+  
+  
 
 export default function RootLayout({ children }) {
 	return (

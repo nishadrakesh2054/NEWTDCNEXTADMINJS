@@ -42,7 +42,8 @@ const individualSports = [
   {
     id: "aquatic",
     name: "Thunderbolts Aquatic Academy",
-    heroImage: "https://img.freepik.com/premium-photo/swimming-trainer-children-swimming-pool-with-transition_1134-18478.jpg?w=1380",
+    heroImage:
+      "https://img.freepik.com/premium-photo/swimming-trainer-children-swimming-pool-with-transition_1134-18478.jpg?w=1380",
     description:
       "Dive into excellence at THUNDERBOLTS! We offer top-notch training with expert coaches and state-of-the-art facilities, designed to help swimmers of all levels improve their technique and achieve their goals. Whether you're just starting out or aiming for competitive success, our programs provide a supportive and effective environment for every swimmer. Join us and make a splash in your swimming journey!",
     levels: [
@@ -92,7 +93,7 @@ export default function IndividualSportList() {
   return (
     <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Our Programs">
       <div className="page-title page-title-blog">
-        <div className="themeflat-container">
+        <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className="page-title-heading">
@@ -120,116 +121,124 @@ export default function IndividualSportList() {
         </div>
         {/* /.container */}
       </div>
+      <div className="container">
+        <div className="row g-4 my-4">
+          {individualSports.map((sport) => {
+            const activeTabIndex = activeTabs[sport.id] || 0;
+            const activeLevel = sport.levels[activeTabIndex];
 
-      <div className="row g-5 themeflat-container">
-        {individualSports.map((sport) => {
-          const activeTabIndex = activeTabs[sport.id] || 0;
-          const activeLevel = sport.levels[activeTabIndex];
-
-          return (
-            <div key={sport.id} className="col-12">
-              <div className="card border-0 shadow-lg overflow-hidden">
-                {/* Hero section */}
-                <div className="position-relative" style={{ height: "350px" }}>
-                  <img
-                    src={sport.heroImage}
-                    alt={sport.name}
-                    className="w-100 h-100 object-fit-cover"
-                    style={{ objectPosition: "center" }}
-                  />
-                  <div className="position-absolute top-0 start-0 w-100 h-100  d-flex align-items-center justify-content-center px-3">
-                    <div className="text-center">
-                      <h3 className="text-white display-6 fw-bold mb-3">
-                        {sport.name}
-                      </h3>
-                      <p className="text-dark mb-0 " style={{ lineHeight: "1.2", fontSize: "1rem" }}>{sport.description}</p>
+            return (
+              <div key={sport.id} className="col-12">
+                <div className="card border-0 shadow-lg overflow-hidden">
+              
+                  <div
+                    className="position-relative"
+                    style={{ height: "350px" }}
+                  >
+                    <img
+                      src={sport.heroImage}
+                      alt={sport.name}
+                      className="w-100 h-100 object-fit-cover"
+                      style={{ objectPosition: "center" }}
+                    />
+                    <div className="position-absolute top-0 start-0 w-100 h-100  d-flex align-items-center justify-content-center px-3">
+                      <div className="text-center">
+                        <h3 className="text-white display-6 fw-bold mb-3">
+                          {sport.name}
+                        </h3>
+                        <p
+                          className="text-dark mb-0 "
+                          style={{ lineHeight: "1.2", fontSize: "1rem" }}
+                        >
+                          {sport.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Levels as Tabs */}
-                <div className="card-body px-4 py-5 bg-light">
-                  <h4 className="mb-4 fw-bold text-center">
-                    Explore Training Levels
-                  </h4>
-                  <ul
-                    className="nav nav-pills mb-3 justify-content-center"
-                    id={`tabs-${sport.id}`}
-                    role="tablist"
-                  >
-                    {sport.levels.map((level, i) => (
-                      <li className="nav-item" key={i}>
-                        <button
-                          className={`nav-link px-3  ${
-                            activeTabIndex === i
-                              ? "active border-primary"
-                              : "border-0"
-                          }`}
-                          onClick={() => handleTabChange(sport.id, i)}
-                          type="button"
-                          role="tab"
-                          style={{
-                            borderRadius: "30px",
-                            transition: "all 0.3s ease-in-out",
-                            backgroundColor:
-                              activeTabIndex === i ? "#007bff" : "#f8f9fa",
-                            color: activeTabIndex === i ? "#ffff" : "#495057",
-                          }}
-                          onMouseEnter={(e) =>
-                            (e.target.style.backgroundColor = "#0056b3")
-                          }
-                          onMouseLeave={(e) =>
-                            (e.target.style.backgroundColor =
-                              activeTabIndex === i ? "#007bff" : "#f8f9fa")
-                          }
-                        >
-                          {level.title}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Active tab content */}
-                  <div className="row align-items-center g-5  mt-2">
-                    <div className="col-md-5 ">
-                      <img
-                        src={activeLevel.image}
-                        alt={activeLevel.title}
-                        className="img-fluid rounded shadow-sm border border-warning border-2"
-                        style={{
-                          width: "100%",
-                          height: "320px",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </div>
-                    <div className="col-md-7">
-                      <h4 className="fw-bold mb-2 text-uppercase">
-                        {activeLevel.title}
-                      </h4>
-                      {activeLevel.age && (
-                        <p className="text-muted mb-2">
-                          Age Group: {activeLevel.age}
-                        </p>
-                      )}
-                      <p className=" post wow fadeInUp animated mb-3">
-                        {activeLevel.description}
-                      </p>
-
-                      <div className="header-right">
-                        <Link href="/register">
-                          <button className="btn-contact">
-                            {activeLevel.button}
+           
+                  <div className="card-body px-4 py-5 bg-light">
+                    <h4 className="mb-4 fw-bold text-center">
+                      Explore Training Levels
+                    </h4>
+                    <ul
+                      className="nav nav-pills mb-3 justify-content-center"
+                      id={`tabs-${sport.id}`}
+                      role="tablist"
+                    >
+                      {sport.levels.map((level, i) => (
+                        <li className="nav-item mx-1" key={i}>
+                          <button
+                            className={`nav-link px-2 text-uppercase  ${
+                              activeTabIndex === i
+                                ? "active border-primary"
+                                : "border-0"
+                            }`}
+                            onClick={() => handleTabChange(sport.id, i)}
+                            type="button"
+                            role="tab"
+                            style={{
+                              borderRadius: "30px",
+                              transition: "all 0.3s ease-in-out",
+                              backgroundColor:
+                                activeTabIndex === i ? "#007bff" : "#f8f9fa",
+                              color: activeTabIndex === i ? "#ffff" : "#495057",
+                            }}
+                            // onMouseEnter={(e) =>
+                            //   (e.target.style.backgroundColor = "#0056b3")
+                            // }
+                            onMouseLeave={(e) =>
+                              (e.target.style.backgroundColor =
+                                activeTabIndex === i ? "#007bff" : "#f8f9fa")
+                            }
+                          >
+                            {level.title}
                           </button>
-                        </Link>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="row align-items-center g-5  mt-2">
+                      <div className="col-md-5 ">
+                        <img
+                          src={activeLevel.image}
+                          alt={activeLevel.title}
+                          className="img-fluid rounded shadow-sm border border-warning border-2"
+                          style={{
+                            width: "100%",
+                            height: "320px",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+                      <div className="col-md-7">
+                        <h4 className="fw-bold mb-2 text-uppercase">
+                          {activeLevel.title}
+                        </h4>
+                        {activeLevel.age && (
+                          <p className="text-muted mb-2">
+                            Age Group: {activeLevel.age}
+                          </p>
+                        )}
+                        <p className=" post wow fadeInUp animated mb-3">
+                          {activeLevel.description}
+                        </p>
+
+                        <div className="header-right">
+                          <Link href="/register">
+                            <button className="btn-contact">
+                              {activeLevel.button}
+                            </button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );

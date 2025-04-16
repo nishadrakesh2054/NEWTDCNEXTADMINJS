@@ -5,7 +5,7 @@ import Benefit1 from "@/components/sections/Benefit1";
 import Form1 from "@/components/sections/Form1";
 import Partner from "@/components/sections/Partner";
 // import Slider1 from "@/components/sections/Slider1";
-import Team1 from "@/components/sections/Team1";
+// import Team1 from "@/components/sections/Team1";
 // import Testimonial1 from "@/components/sections/Testimonial1";
 export default function Home() {
   return (
@@ -16,9 +16,9 @@ export default function Home() {
         <About1 />
 
         <Benefit1 />
-        <br />
+        <div className="graphic" />
         {/* <Testimonial1 /> */}
-        <Team1 />
+        {/* <Team1 /> */}
         {/* <Banner /> */}
         <Partner />
 

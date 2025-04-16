@@ -187,7 +187,7 @@ const page = () => {
       <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="title">
         <div className="bg-light">
           <div className="page-title page-title-blog">
-            <div className="themeflat-container">
+            <div className="container">
               <div className="row">
                 <div className="col-md-12">
                   <div className="page-title-heading">

@@ -4,7 +4,7 @@ export default function About1() {
   return (
     <>
       <div className="tf-widget-about-us main-content">
-        <div className="themeflat-container">
+        <div className="container">
           <div className="tf-about-us">
             <div className="row">
             
@@ -33,7 +33,7 @@ export default function About1() {
 
               <div className="col-md-6">
                 <div className="about-box">
-                  <img src="images/about/graphic-box.png" alt="image shape" />
+                  {/* <img src="images/about/graphic-box.png" alt="image shape" /> */}
                   {/* header style v1 */}
                   <div className="title-box title-small-v2">
                     <span className="sub-title wow fadeInUp animated ">
@@ -57,7 +57,7 @@ export default function About1() {
                   <div className="about-button-group">
                     <Link href="/about">
                       <button className="flat-button wow fadeInUp animated">
-                        Find out more
+                        View more
                       </button>
                     </Link>
                   </div>

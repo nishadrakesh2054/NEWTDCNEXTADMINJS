@@ -3,6 +3,7 @@ import { useState } from "react";
 import CountUp from "react-countup";
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
+
 export default function About() {
   const [isTab, setIsTab] = useState(1);
   const handleTab = (i) => {
@@ -14,7 +15,7 @@ export default function About() {
       <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="title">
         <div>
           <div className="page-title">
-            <div className="themeflat-container">
+            <div className="container">
               <div className="row">
                 <div className="col-md-12">
                   <div className="page-title-heading">
@@ -44,7 +45,7 @@ export default function About() {
           </div>
 
           <div className="tf-widget-about-us main-content">
-            <div className="themeflat-container">
+            <div className="container">
               <div className="tf-about-us">
                 <div className="row">
                   <div className="col-md-6">
@@ -93,14 +94,6 @@ export default function About() {
                         mission is to create a pathway for young athletes to
                         achieve success both on and off the field.
                       </p>
-                      <div className="line" />
-                      <div className="about-button-group">
-                        <Link href="/about">
-                          <button className="flat-button wow fadeInUp animated">
-                            Find out more
-                          </button>
-                        </Link>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -111,7 +104,7 @@ export default function About() {
 
           {/* Widget-counter */}
           <div className="tf-wiget-counter background-surface main-content-medium">
-            <div className="themeflat-container">
+            <div className="container">
               <div className="tf-counter">
                 <div className="row">
                   <div className="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 col-xxl-3">
@@ -164,7 +157,7 @@ export default function About() {
                       data-wow-delay="0.2s"
                     >
                       <svg
-                        width={81}
+                        width={60}
                         height={80}
                         viewBox="0 0 81 80"
                         fill="none"
@@ -314,15 +307,11 @@ export default function About() {
           {/* Widget-counter */}
 
           <div className="tf-widget-mission main-content">
-            <div className="themeflat-container">
-              <div className="row">
-                <div className="col-md-12 col-lg-7">
-                  <div className="image-mission-wrap">
-                    <img
-                      src="https://img.freepik.com/premium-photo/close-up-multi-colored-umbrella_1048944-23002910.jpg?w=996"
-                      alt="Image"
-                      className="image-v1 wow fadeInRight animated"
-                    />
+            <div className="container">
+              <div className="row ">
+                <div className="col-md-12 col-lg-6">
+                  <div className="">
+                  
                     <img
                       src="https://img.freepik.com/premium-photo/low-angle-view-bicycle-wheel_1048944-13858637.jpg?w=996"
                       alt="Image"
@@ -330,7 +319,7 @@ export default function About() {
                     />
                   </div>
                 </div>
-                <div className="col-md-12 col-lg-5">
+                <div className="col-md-12 col-lg-6">
                   <div className="mission-content">
                     <div className="mission-tab">
                       <nav>
@@ -370,7 +359,16 @@ export default function About() {
                           aria-labelledby="nav-home-tab"
                         >
                           <p className="post wow fadeInUp animated">
-                          Our mission is to nurture talent, develop elite athletes, and organize world-class sports and e-sports events. We provide comprehensive training, state-of-the-art facilities, and support for athletes of all ages, fostering excellence, discipline, and sportsmanship. We empower individuals to reach their full potential and positively impact the sports and e-sports industry in Nepal and beyond.                        </p>
+                            Our mission is to nurture talent, develop elite
+                            athletes, and organize world-class sports and
+                            e-sports events. We provide comprehensive training,
+                            state-of-the-art facilities, and support for
+                            athletes of all ages, fostering excellence,
+                            discipline, and sportsmanship. We empower
+                            individuals to reach their full potential and
+                            positively impact the sports and e-sports industry
+                            in Nepal and beyond.{" "}
+                          </p>
                           <ul>
                             <li
                               className="wow fadeInUp animated"
@@ -493,7 +491,13 @@ export default function About() {
                           aria-labelledby="nav-profile-tab"
                         >
                           <p className="post wow fadeInUp animated">
-                          THUNDERBOLTS DEVELOPMENT CENTER envisions becoming Nepal's leading sports and e-sports academy, with multiple centers across the country. We aim to set new standards of excellence and own professional clubs that provide a clear pathway for elite athletes, bringing pride to Nepal on national and international stage
+                            THUNDERBOLTS DEVELOPMENT CENTER envisions becoming
+                            Nepal's leading sports and e-sports academy, with
+                            multiple centers across the country. We aim to set
+                            new standards of excellence and own professional
+                            clubs that provide a clear pathway for elite
+                            athletes, bringing pride to Nepal on national and
+                            international stage
                           </p>
                           <ul>
                             <li
@@ -574,7 +578,8 @@ export default function About() {
                                     stroke="#121212"
                                   />
                                 </svg>
-                                Collaboration and Inclusion                              </span>
+                                Collaboration and Inclusion{" "}
+                              </span>
                             </li>
                             <li
                               className="wow fadeInUp animated"
@@ -612,10 +617,10 @@ export default function About() {
               </div>
             </div>
           </div>
-      
+
           {/* Team-member */}
           <div className="tf-widget-team main-content">
-            <div className="themeflat-container">
+            <div className="container">
               <div className="team-member">
                 <div className="title-box title-small center-title-box">
                   <span className="sub-title wow fadeInUp animated">
@@ -632,7 +637,10 @@ export default function About() {
                       data-wow-delay="0.1s"
                     >
                       <div className="team-image">
-                        <img src="https://img.freepik.com/free-photo/playing-black-touch-training-model_1368-1871.jpg?t=st=1743934514~exp=1743938114~hmac=093a0802bee332110a0ecd58269c21556930917352e33f24b432e3a1e0fc72a4&w=740" alt="Team member" />
+                        <img
+                          src="https://img.freepik.com/free-photo/playing-black-touch-training-model_1368-1871.jpg?t=st=1743934514~exp=1743938114~hmac=093a0802bee332110a0ecd58269c21556930917352e33f24b432e3a1e0fc72a4&w=740"
+                          alt="Team member"
+                        />
                         <div className="team-social">
                           <ul>
                             <li>
@@ -664,7 +672,10 @@ export default function About() {
                       data-wow-delay="0.3s"
                     >
                       <div className="team-image">
-                        <img src="https://img.freepik.com/free-photo/cricketer-field-batting-position_53876-137679.jpg?t=st=1743934109~exp=1743937709~hmac=044c2f542de6a4ad42236f93b7d8ded766afaf6f930366c5eed7ea4e860eae70&w=740" alt="Team member" />
+                        <img
+                          src="https://img.freepik.com/free-photo/cricketer-field-batting-position_53876-137679.jpg?t=st=1743934109~exp=1743937709~hmac=044c2f542de6a4ad42236f93b7d8ded766afaf6f930366c5eed7ea4e860eae70&w=740"
+                          alt="Team member"
+                        />
                         <div className="team-social">
                           <ul>
                             <li>
@@ -696,7 +707,10 @@ export default function About() {
                       data-wow-delay="0.5s"
                     >
                       <div className="team-image">
-                        <img src="https://img.freepik.com/premium-photo/portrait-middle-aged-businessman-with-soccer-ball-isolated-white-background_358320-1192.jpg?w=740" alt="Team member" />
+                        <img
+                          src="https://img.freepik.com/premium-photo/portrait-middle-aged-businessman-with-soccer-ball-isolated-white-background_358320-1192.jpg?w=740"
+                          alt="Team member"
+                        />
                         <div className="team-social">
                           <ul>
                             <li>
@@ -728,7 +742,10 @@ export default function About() {
                       data-wow-delay="0.7s"
                     >
                       <div className="team-image">
-                        <img src="https://img.freepik.com/free-photo/man-focused-tennis-game_329181-14418.jpg?t=st=1743934244~exp=1743937844~hmac=7fe589902284fe4bdbca20c4bb8e903e3d52d8ed60894f0491f6baaacc140b30&w=740" alt="Team member" />
+                        <img
+                          src="https://img.freepik.com/free-photo/man-focused-tennis-game_329181-14418.jpg?t=st=1743934244~exp=1743937844~hmac=7fe589902284fe4bdbca20c4bb8e903e3d52d8ed60894f0491f6baaacc140b30&w=740"
+                          alt="Team member"
+                        />
                         <div className="team-social">
                           <ul>
                             <li>
@@ -759,7 +776,6 @@ export default function About() {
             </div>
           </div>
           {/* Team-member */}
-
         </div>
       </Layout>
     </>

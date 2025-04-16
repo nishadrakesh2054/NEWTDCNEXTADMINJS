@@ -1,18 +1,23 @@
-// controllers/contactController.js
 import Contact from "../models/contactModel.js";
-// import nodemailer from "nodemailer";
 
 // Create a new contact
 export const createContact = async (req, res) => {
   try {
-    const { name, email, phone, message } = req.body;
+    const { name, email, phone, message, subject, notes } = req.body;
     // Input validation (basic example)
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !subject) {
       return res
         .status(400)
         .json({ message: "Name, email, and message are required" });
     }
-    const newContact = new Contact({ name, email, phone, message });
+    const newContact = new Contact({
+      name,
+      email,
+      phone,
+      message,
+      subject,
+      notes,
+    });
     const savedContact = await newContact.save();
 
     res.status(201).json({

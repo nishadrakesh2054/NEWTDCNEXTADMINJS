@@ -54,7 +54,7 @@ export default function SpecialCampsPage() {
         <div>
           {/* Page Title */}
           <div className="page-title page-title-blog">
-            <div className="themeflat-container">
+            <div className="container">
               <div className="row">
                 <div className="col-md-12">
                   <div className="page-title-heading">
@@ -78,50 +78,8 @@ export default function SpecialCampsPage() {
               </div>
             </div>
           </div>
-          {/* Camps Cards */}
-          {/* <div className=" themeflat-container">
-            <div className="row d-flex flex-wrap justify-content-center py-5">
-              <p className="post wow fadeInUp animated text-center py-5">
-                Explore new challenges, refine your skills, and connect with
-                fellow athletes in an environment that fosters growth and
-                success. No matter your level or sport, our special camps
-                provide the perfect opportunity to push your limits and take
-                your performance to new heights.
-              </p>
-              {items.map((camp) => (
-                <div
-                  key={camp.id}
-                  className="col-md-4 mb-4 wow fadeInUp animated"
-                  data-wow-delay={`${0.2 * camp.id}s`}
-                >
-                  <div className="card shadow-lg rounded border-0">
-                    <img
-                      src={camp.image}
-                      className="card-img-top rounded-top"
-                      alt={camp.title}
-                      style={{
-                        objectFit: "cover",
-                        height: "200px",
-                      }}
-                    />
-                    <div className="card-body text-center">
-                      <h5 className="card-title">{camp.title}</h5>
-                      <p className="card-text">{camp.briefIntro}</p>
-                      <Link
-                        href={`/camps/${camp.title
-                          .toLowerCase()
-                          .replace(/\s+/g, "-")}`}
-                        className="btn btn-primary"
-                      >
-                        Learn More
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div> */}
-          <div className="themeflat-container">
+      
+          <div className="container">
             <p className="post wow fadeInUp animated text-center py-5 display-6">
               Explore new challenges, refine your skills, and connect with
               fellow athletes in an environment that fosters growth and success.
